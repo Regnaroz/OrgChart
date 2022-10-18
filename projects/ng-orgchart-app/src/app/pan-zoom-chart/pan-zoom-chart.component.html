@@ -1,1 +1,6 @@
-<organization-chart [datasource]="ds" [pan]="true" [zoom]="true"></organization-chart>
+<organization-chart [datasource]="data" [pan]="true" [zoom]="false"></organization-chart>
+
+<ng-template #defaultNodeTemplate let-nodeData="datasource" let-heading="nodeHeading" let-content="nodeContent">
+	<div class="oc-node-heading">{{nodeData.code}}</div>
+	<div class="oc-node-content">{{nodeData.code}}</div>
+</ng-template>

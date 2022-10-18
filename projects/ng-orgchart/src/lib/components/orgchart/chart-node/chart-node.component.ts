@@ -47,7 +47,7 @@ export class ChartNodeComponent implements OnInit {
   @Output() nodeClick = new EventEmitter<any>();
 
   Arr = Array; // Array type captured in a variable
-  isCollapsed = false;
+  isCollapsed = true;
   ecStyles: object;
   isSelected: boolean;
   subscription: Subscription;

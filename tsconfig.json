@@ -24,6 +24,9 @@
       ],
       "ng-orgchart/*": [
         "dist/ng-orgchart/*"
+      ],
+      "@angular/*": [
+        "./node_modules/@angular/*"
       ]
     }
   }
