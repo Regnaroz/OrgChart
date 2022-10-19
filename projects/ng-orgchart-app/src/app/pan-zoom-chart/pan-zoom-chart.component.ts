@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, ElementRef, OnInit ,ViewChild} from '@angular/core';
+import { ChartContainerComponent } from 'projects/ng-orgchart/src/lib/components/orgchart/chart-container/chart-container.component';
 @Component({
   selector: 'app-pan-zoom-chart',
   templateUrl: './pan-zoom-chart.component.html',
   styleUrls: ['./pan-zoom-chart.component.css']
 })
 export class PanZoomChartComponent implements OnInit {
-
+  @ViewChild('chartComp', {static: false}) pRef: ElementRef;
   ds = {
     id: '1',
     name: 'Lao Lao',
@@ -18594,4 +18594,9 @@ export class PanZoomChartComponent implements OnInit {
   ngOnInit() {
   }
 
+  onNodeExapnd(node:any){
+   this.pRef
+    debugger
+  }
+ 
 }
