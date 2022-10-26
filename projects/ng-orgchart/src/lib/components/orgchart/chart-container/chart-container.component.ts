@@ -12,7 +12,7 @@ export class ChartContainerComponent implements OnInit {
   @Input() nodeHeading = 'name';
   @Input() nodeContent = 'title';
   @Input() nodeTemplate: TemplateRef<any>;
-  @Input() groupScale = 3;
+  @Input() groupScale = 1;
   @Input() pan = false;
   @Input() zoom = false;
   @Input() zoomoutLimit = 0.5;
@@ -23,7 +23,7 @@ export class ChartContainerComponent implements OnInit {
 
   @Output() nodeClick = new EventEmitter<any>();
   @Output() chartClick = new EventEmitter();
-
+  @Output() ExpandedList:Node[] = []
   cursorVal = 'default';
   panning = false;
   startX = 0;
@@ -146,6 +146,37 @@ export class ChartContainerComponent implements OnInit {
   }
 
   onNodeClick(nodeData: any) {
+    debugger
+    if(!nodeData.isCollapsed)
+    {
+      
+      this.ExpandedList.forEach((node:any)=>{
+        if(node.level !=0 && node.parentId == nodeData.parentId){
+          debugger
+          node.isCollapsed =true
+          const index = this.ExpandedList.indexOf(node);
+          this.ExpandedList.splice(index, 1);
+        }
+      })
+      this.ExpandedList.push(nodeData)
+      this.ExpandedList =  this.removeDups(this.ExpandedList);
+    }
+    else
+    {
+     
+      const index: number = this.ExpandedList.indexOf(nodeData);
+      if (index !== -1) {
+        nodeData.isCollapsed
+        this.ExpandedList.splice(index, 1);
+        debugger
+      }  
+    }
+ 
+    
+    debugger
     this.nodeClick.emit(nodeData);
   }
+  removeDups(list:any[]) {
+    return list.filter((value, index) => list.indexOf(value) === index);
+   }
 }

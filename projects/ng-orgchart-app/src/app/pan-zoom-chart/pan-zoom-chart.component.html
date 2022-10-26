@@ -1,6 +1,10 @@
-<organization-chart [datasource]="data" [pan]="true" [zoom]="false"></organization-chart>
+<organization-chart #chartComp [groupScale]="2" (nodeClick)="onNodeExapnd($event)"  [datasource]="data"  [zoom]="false" [nodeTemplate]="myNodeTemplate"></organization-chart>
 
-<ng-template #defaultNodeTemplate let-nodeData="datasource" let-heading="nodeHeading" let-content="nodeContent">
-	<div class="oc-node-heading">{{nodeData.code}}</div>
-	<div class="oc-node-content">{{nodeData.code}}</div>
+<ng-template #myNodeTemplate let-nodeData="datasource" class="Org-Node">
+	
+	<div class="node-Body" >
+		<div class="nodeType">{{nodeData.type}}</div>
+		<div class="node-Body">{{nodeData.code}}</div>
+	</div>
+    <br>
 </ng-template>
