@@ -151,5 +151,8 @@
         }
       }
     }},
-  "defaultProject": "ng-orgchart"
+  "defaultProject": "ng-orgchart",
+  "cli": {
+    "analytics": false
+  }
 }

@@ -5,4 +5,5 @@ export class Node {
   isCollapsed:boolean;
   children?: Node[];
   level :number
+  styleNodeClass:any
 }
